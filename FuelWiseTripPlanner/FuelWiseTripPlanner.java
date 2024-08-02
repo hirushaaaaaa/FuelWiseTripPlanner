@@ -12,6 +12,6 @@ public class FuelWiseTripPlanner {
 
         Vehicle vehicle = new Vehicle(fuelConsumptionRate, fuelTankCapacity);
 
-        
+        Queue<TripRequest> tripQueue = new LinkedList<>();
      }
 }
