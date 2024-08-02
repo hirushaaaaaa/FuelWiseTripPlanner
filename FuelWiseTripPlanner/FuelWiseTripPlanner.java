@@ -30,7 +30,7 @@ public class FuelWiseTripPlanner {
             System.out.println("11. Process Trip Request Queue");
             System.out.println("12. Exit");
 
-            System.out.print("Enter your choice: ");
+            System.out.print("Enter your choice (1-12): ");
             int choice = scanner.nextInt();
 
             if (choice ==12){
