@@ -51,7 +51,23 @@ public class FuelWiseTripPlanner {
                     double distanceForFuel = scanner.nextDouble();
                     double fuelNeeded = vehicle.calculateFuelNeeded(distanceForFuel);
                     System.out.println("Fuel Needed: " + fuelNeeded + " liters");
-                    break;        
+                    break;    
+                    
+                case 3:
+                    System.out.print("Enter distance traveled (km): ");
+                    double distanceTraveled = scanner.nextDouble();
+                    System.out.print("Enter fuel used (liters): ");
+                    double fuelUsed = scanner.nextDouble();
+                    double consumptionRate = distanceTraveled / fuelUsed;
+                    System.out.println("Fuel Consumption Rate: " + consumptionRate + " km/l");
+                    break;
+                
+                case 4:
+                    System.out.print("Enter distance in miles: ");
+                    double miles = scanner.nextDouble();
+                    double kilometers = miles * 1.60934;
+                    System.out.println(miles + " miles is " + kilometers + " kilometers");
+                    break;
             }
         }
      }
