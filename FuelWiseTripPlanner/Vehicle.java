@@ -18,4 +18,5 @@ public class Vehicle{
     public double getFuelConsumptionRate(){
         return fuelConsumptionRate;
     }
+
 }
