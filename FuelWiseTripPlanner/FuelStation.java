@@ -1,18 +1,17 @@
 public class FuelStation {
     private String name;
-    private double price;
+    private double price; 
 
-    public FuelStation (String name, double price){
+    public FuelStation(String name, double price) {
         this.name = name;
         this.price = price;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public double getPrice(){
+    public double getPrice() {
         return price;
     }
-    
 }
