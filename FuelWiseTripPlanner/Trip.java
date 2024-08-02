@@ -17,4 +17,5 @@ public class Trip{
     public double calculateAverageSpeed(){
         return distance / time;
     }
+    
 }
