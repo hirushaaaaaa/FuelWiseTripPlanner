@@ -85,7 +85,83 @@ public class FuelWiseTripPlanner {
                     double tripCost = trip.estimatedCost(vehicle.getFuelConsumptionRate());
                     System.out.println("Estimated Trip Cost: Rs" + tripCost);
                     break;   
+
+                case 7:
+                    System.out.print("Enter a value to validate: ");
+                    double value = scanner.nextDouble();
+                    if (value > 0) {
+                        System.out.println("Valid input.");
+                    } else {
+                        System.out.println("Invalid input. Please enter a positive value.");
+                    }
+                    break;
+
+                case 8:
+                    System.out.print("Enter trip distance (km): ");
+                    double distance = scanner.nextDouble();
+                    System.out.print("Enter trip time (hours): ");
+                    double time = scanner.nextDouble();
+                    trip = new Trip(distance, 0, time);
+                    double averageSpeed = trip.calculateAverageSpeed();
+                    System.out.println("Average Speed: " + averageSpeed + " km/h");
+                    break;
+                    
+                case 9:
+                    System.out.print("Enter number of fuel stations: ");
+                    int numberOfStations = scanner.nextInt();
+
+                    List<FuelStation> stations = new ArrayList<>();
+                    for (int i = 0; i < numberOfStations; i++) {
+                    System.out.print("Enter name of fuel station " + (i + 1) + ": ");
+                    String name = scanner.next();
+
+                    System.out.print("Enter price of fuel at " + name + ": ");
+                    double price = scanner.nextDouble();
+
+                    stations.add(new FuelStation(name, price));
+                    }
+
+                    PriorityQueue<FuelStation> pq = new PriorityQueue<>(Comparator.comparingDouble(FuelStation::getPrice));
+                    pq.addAll(stations);
+
+                    FuelStation cheapestStation = pq.poll();
+                    if (cheapestStation != null) {
+                        System.out.println("Cheapest Fuel Station: " + cheapestStation.getName() + " with price $" + cheapestStation.getPrice() + " per liter");
+                    } else {
+                        System.out.println("No stations available.");
+                    }
+                    break;
+
+                    case 10:
+                    System.out.print("Enter trip distance (km): ");
+                    double queueTripDistance = scanner.nextDouble();
+                    System.out.print("Enter fuel price (per liter): ");
+                    double queueFuelPrice = scanner.nextDouble();
+                    System.out.print("Enter trip time (hours): ");
+                    double queueTripTime = scanner.nextDouble();
+                    tripQueue.add(new TripRequest(queueTripDistance, queueFuelPrice, queueTripTime));
+                    System.out.println("Trip request added to queue.");
+                    break;
+
+                case 11:
+                    System.out.println("Processing trip request queue...");
+                    while (!tripQueue.isEmpty()) {
+                        TripRequest request = tripQueue.poll();
+                        trip = new Trip(request.getDistance(), request.getFuelPrice(), request.getTime());
+                        tripCost = trip.estimatedCost(vehicle.getFuelConsumptionRate());
+                        averageSpeed = trip.calculateAverageSpeed();
+                        System.out.println("Trip Distance: " + request.getDistance() + " km, Fuel Price: Rs" + request.getFuelPrice() + " per liter, Trip Time: " + request.getTime() + " hours");
+                        System.out.println("Estimated Trip Cost: Rs" + tripCost);
+                        System.out.println("Average Speed: " + averageSpeed + " km/h");
+                    }
+                    break;
+
+                    default:
+                    System.out.println("Invalid choice. Please try again.");
+                    
             }
+        scanner.close();
         }
-     }
+    }
 }
+        
