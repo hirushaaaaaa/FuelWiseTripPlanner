@@ -147,15 +147,19 @@ public class FuelWiseTripPlanner {
                     break;
 
                 case 11:
-                    System.out.println("Processing trip request queue...");
-                    while (!tripQueue.isEmpty()) {
-                        TripRequest request = tripQueue.poll();
-                        trip = new Trip(request.getDistance(), request.getFuelPrice(), request.getTime());
-                        tripCost = trip.estimateCost(vehicle.getFuelConsumptionRate());
-                        averageSpeed = trip.calculateAverageSpeed();
-                        System.out.println("Trip Distance: " + request.getDistance() + " km, Fuel Price: Rs" + request.getFuelPrice() + " per liter, Trip Time: " + request.getTime() + " hours");
-                        System.out.println("Estimated Trip Cost: Rs" + tripCost);
-                        System.out.println("Average Speed: " + averageSpeed + " km/h");
+                    if (tripQueue.isEmpty()) {
+                        System.out.println("The trip request queue is empty.");
+                    } else {
+                        System.out.println("Processing trip request queue...");
+                        while (!tripQueue.isEmpty()) {
+                            TripRequest request = tripQueue.poll();
+                            trip = new Trip(request.getDistance(), request.getFuelPrice(), request.getTime());
+                            tripCost = trip.estimateCost(vehicle.getFuelConsumptionRate());
+                            averageSpeed = trip.calculateAverageSpeed();
+                            System.out.println("Trip Distance: " + request.getDistance() + " km, Fuel Price: $" + request.getFuelPrice() + " per liter, Trip Time: " + request.getTime() + " hours");
+                            System.out.println("Estimated Trip Cost: $" + tripCost);
+                            System.out.println("Average Speed: " + averageSpeed + " km/h");
+                        }
                     }
                     break;
 
