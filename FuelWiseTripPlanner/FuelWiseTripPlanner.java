@@ -23,7 +23,7 @@ public class FuelWiseTripPlanner {
             System.out.println("4. Convert Miles to Kilometers");
             System.out.println("5. Convert Kilometers to Miles");
             System.out.println("6. Estimate Cost of Trip");
-            System.out.println("7. Validate Input");
+            System.out.println("7. Check if your input is valid");
             System.out.println("8. Calculate Average Speed");
             System.out.println("9. Find Cheapest Fuel Station");
             System.out.println("10. Add Trip Request to Queue");
