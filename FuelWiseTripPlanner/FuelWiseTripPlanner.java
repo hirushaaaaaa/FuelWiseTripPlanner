@@ -68,6 +68,23 @@ public class FuelWiseTripPlanner {
                     double kilometers = miles * 1.60934;
                     System.out.println(miles + " miles is " + kilometers + " kilometers");
                     break;
+
+                case 5:
+                    System.out.print("Enter distance in kilometers: ");
+                    double kms = scanner.nextDouble();
+                    double milesConverted = kms / 1.60934;
+                    System.out.println(kms + " kilometers is " + milesConverted + " miles");
+                    break;
+
+                case 6:
+                    System.out.print("Enter trip distance (km): ");
+                    double tripDistance = scanner.nextDouble();
+                    System.out.print("Enter fuel price (per liter): ");
+                    double tripFuelPrice = scanner.nextDouble();
+                    Trip trip = new Trip(tripDistance, tripFuelPrice, 0);
+                    double tripCost = trip.estimatedCost(vehicle.getFuelConsumptionRate());
+                    System.out.println("Estimated Trip Cost: Rs" + tripCost);
+                    break;   
             }
         }
      }
