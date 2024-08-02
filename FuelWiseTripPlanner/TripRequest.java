@@ -20,4 +20,5 @@ public class TripRequest {
     public double getTime(){
         return time;
     }
+    
 }
