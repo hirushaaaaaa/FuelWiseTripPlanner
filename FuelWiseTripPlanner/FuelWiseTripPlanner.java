@@ -45,6 +45,13 @@ public class FuelWiseTripPlanner {
                     double distancePossible = vehicle.calculateDistancePossible(fuelAmount);
                     System.out.println("Distance Possible: " +distancePossible + " kilometers");
                     break;
+
+                case 2:
+                    System.out.print("Enter distance (km): ");
+                    double distanceForFuel = scanner.nextDouble();
+                    double fuelNeeded = vehicle.calculateFuelNeeded(distanceForFuel);
+                    System.out.println("Fuel Needed: " + fuelNeeded + " liters");
+                    break;        
             }
         }
      }
