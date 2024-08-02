@@ -29,6 +29,23 @@ public class FuelWiseTripPlanner {
             System.out.println("10. Add Trip Request to Queue");
             System.out.println("11. Process Trip Request Queue");
             System.out.println("12. Exit");
+
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
+
+            if (choice ==12){
+                System.out.println("Exiting....");
+                break;
+            }
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter amount of fuel (liters): ");
+                    double fuelAmount = scanner.nextDouble();
+                    double distancePossible = vehicle.calculateDistancePossible(fuelAmount);
+                    System.out.println("Distance Possible: " +distancePossible + " kilometers");
+                    break;
+            }
         }
      }
 }
