@@ -17,7 +17,7 @@ public class FuelWiseTripPlanner {
 
         while (true) {
             // Display menu
-            System.out.println("\nChoose any option:");
+            System.out.println("\nSelect any option:");
             System.out.println("1. Calculate Distance Possible");
             System.out.println("2. Calculate Fuel Needed for Distance");
             System.out.println("3. Calculate Fuel Consumption Rate");
