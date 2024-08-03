@@ -28,7 +28,7 @@ public class FuelWiseTripPlanner {
             System.out.println("8. Calculate Average Speed");
             System.out.println("9. Find Cheapest Fuel Station");
             System.out.println("10. Add Trip Request to Queue");
-            System.out.println("11. Process Trip Request Queue");
+            System.out.println("11. Display Trip Request Queue");
             System.out.println("12. Close");
 
             System.out.println();
