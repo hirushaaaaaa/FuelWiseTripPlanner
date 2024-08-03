@@ -36,7 +36,7 @@ public class FuelWiseTripPlanner {
             int choice = scanner.nextInt();
 
             if (choice == 12) {
-                System.out.println("Exiting...");
+                System.out.println("Thank you for using FuelWiseTripPlanner");
                 break;
             }
 
