@@ -16,7 +16,7 @@ public class FuelWiseTripPlanner {
         Queue<TripRequest> tripQueue = new LinkedList<>();
 
         while (true) {
-            // Display menu
+            // Displaying option menu
             System.out.println("\nSelect any option:");
             System.out.println("1. Calculate Distance Possible");
             System.out.println("2. Calculate Fuel Needed for Distance");
@@ -111,20 +111,39 @@ public class FuelWiseTripPlanner {
                 case 9:
                     // Input for Fuel Stations
                     System.out.print("Enter number of fuel stations: ");
-                    int numberOfStations = scanner.nextInt();
+                    int numberOfStations;
 
-                    List<FuelStation> stations = new ArrayList<>();
-                    for (int i = 0; i < numberOfStations; i++) {
-                        System.out.print("Enter name of fuel station " + (i + 1) + ": ");
-                        String name = scanner.next();
+                    while (true) {
+                    if (scanner.hasNextInt()) {
+                     numberOfStations = scanner.nextInt();
+                     if (numberOfStations > 0) {
+                         break; // Valid input received, exit the loop
+                   } else {
+                     System.out.print("Please enter a positive integer for the number of stations: ");
+                  }
+                 } else {
+                    System.out.print("Invalid input. Please enter an integer for the number of stations: ");
+                     scanner.next(); // Consume the invalid input
+                        }
+                }
 
-                        System.out.print("Enter price of fuel at " + name + ": ");
-                        double price = scanner.nextDouble();
+                List<FuelStation> stations = new ArrayList<>();
+                for (int i = 0; i < numberOfStations; i++) {
+                System.out.print("Enter name of fuel station " + (i + 1) + ": ");
+                String name = scanner.next();
 
-                        stations.add(new FuelStation(name, price));
-                    }
+                System.out.print("Enter price of fuel at " + name + ": ");
+                while (!scanner.hasNextDouble()) {
+                System.out.print("Invalid input. Please enter a valid price for fuel at " + name + ": ");
+                scanner.next(); // Consume the invalid input
+                        }
+                double price = scanner.nextDouble();
 
-                    // Find cheapest station using PriorityQueue (min-heap)
+                stations.add(new FuelStation(name, price));
+                }
+
+
+                    // Find cheapest station by using PriorityQueue (min-heap)
                     PriorityQueue<FuelStation> pq = new PriorityQueue<>(Comparator.comparingDouble(FuelStation::getPrice));
                     pq.addAll(stations);
 
